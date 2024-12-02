@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfume Bliss</title>
+    <link rel="stylesheet" href="style5.css">
+</head>
+<body>
+    <header>
+        <div class="logo">Perfume Bliss</div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Home Section -->
+    <section id="home" class="banner">
+        <h1>Welcome to Perfume Bliss</h1>
+        <p>Discover your signature scent with us.</p>
+        <a href="#products" class="btn">Shop Now</a>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="content">
+            <h2>About Us</h2>
+            <p>
+                At Perfume Bliss, we believe in the power of fragrances to evoke memories and emotions. 
+                Explore our curated collection of exquisite perfumes designed to match every personality and mood. 
+                Dive into a world of luxury and sophistication with our signature scents.
+            </p>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="products">
+        <h2>Our Products</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, eligendi?</p>
+        <div class="product-list">
+            <div class="product">
+                <img src="perfume1.jpg" alt="Floral Fantasy">
+                <h3>Floral Fantasy</h3>
+                <p>₹769.30</p>
+            </div>
+            <div class="product">
+                <img src="perfume2.jpg" alt="Ocean Breeze">
+                <h3>Ocean Breeze</h3>
+                <p>₹565.50</p>
+            </div>
+            <div class="product">
+                <img src="perfume3.jpg" alt="Midnight Musk">
+                <h3>Midnight Musk</h3>
+                <p>₹599.70</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2>Contact Us</h2>
+        <form action="#">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" required></textarea>
+            <button type="submit">Send</button>
+        </form>
+        <h3>Pin Your Location</h3>
+        <div id="map"></div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Perfume Bliss. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Leaflet.js for Map -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // Initialize the map and set its view to a default location
+        const map = L.map('map').setView([20.5937, 78.9629], 5); // Default: India
+
+        // Add OpenStreetMap tiles
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Add a marker that updates when the user clicks
+        let marker;
+        map.on('click', (e) => {
+            const { lat, lng } = e.latlng;
+            if (marker) {
+                map.removeLayer(marker); // Remove the previous marker
+            }
+            marker = L.marker([lat, lng]).addTo(map)
+                .bindPopup(`You pinned: Latitude ${lat.toFixed(4)}, Longitude ${lng.toFixed(4)}`)
+                .openPopup();
+        });
+    </script>
+</body>
+</html>
