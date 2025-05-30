@@ -37,3 +37,18 @@ This project showcases frontend design skills including layout structuring, resp
 ```bash
 1. Clone the repository
 2. Open index.html in your web browser
+
+perfume-website/
+│
+├── index.html
+├── styles/
+│   └── style.css
+├── assets/
+│   └── images/
+│       ├── about.jpg
+│       └── perfume1.png
+|       └── perfume2.png
+|       └── perfume3.png
+|       └── banner.png
+├── README.md
+
